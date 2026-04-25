@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+        <style>
+        :root {
+            --primary: #f59e0b;
+            --bg: #0c0a09;
+            --text: #e7e5e4;
+            --card: #1c1917;
+            --border: #44403c;
+            --error: #ef4444; /* Added for validation feedback */
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        .container {
+            background-color: var(--card);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        .form-group { margin-bottom: 0.5rem; }
+        .full-width { grid-column: span 2; }
+        
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #a8a29e;
+        }
+
+        /* Highlight invalid fields when user starts typing */
+        input:focus:invalid, select:focus:invalid, textarea:focus:invalid {
+            border-color: var(--error);
+        }
+
+        input:not([type="radio"]):not([type="checkbox"]),
+        select, textarea {
+            width: 100%;
+            padding: 10px;
+            background-color: #0c0a09;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: white;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+        input:focus, select:focus { outline: none; border-color: var(--primary); }
+
+        .selection-container { display: flex; gap: 1rem; margin-top: 5px; border: 1px solid var(--border); padding: 10px; border-radius: 6px; }
+        .selection-item { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.85rem; }
+        input[type="radio"], input[type="checkbox"] { accent-color: var(--primary); cursor: pointer; }
+
+        .btn-submit {
+            background-color: var(--primary);
+            color: #000;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Master Input Form</h1>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="fname">First Name (Required, min 3 char):</label>
+                    <input type="text" id="fname" placeholder="Enter your First Name" required minlength="3">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email (Required):</label>
+                    <input type="email" id="email" placeholder="example@mail.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password (Required):</label>
+                    <input type="password" id="password" placeholder="********" required>
+                </div>
+                <div class="form-group">
+                    <label for="telephone">Phone No.</label>
+                    <input type="tel" id="phone" placeholder="+254 700...">
+                </div>
+                <div class="form-group">
+                    <label for="track">Select (Dropdown)</label>
+                    <select id="track" name="track" required>
+                        <option value="">-- Choose a Track --</option>
+                        <option value="fs">Fullstack</option>
+                        <option value="dso">DevSecOps</option>
+                        <option value="ds">Data Science</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" min="18" max="100" required>
+                </div>
+                <div class="form-group full-width">
+                    <label>Radio Type (Select One)</label>
+                    <div class="selection-container">
+                        <label class="selection-item">
+                            <input type="radio" name="level" value="beg" required> Beginner
+                        </label>
+                        <label class="selection-item">
+                            <input type="radio" name="level" value="int"> Intermediate
+                        </label>
+                        <label class="selection-item">
+                            <input type="radio" name="level" value="adv"> Advanced
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group full-width">
+                   <label for="prof">Checkbox</label>
+                   <div class="selection-container">
+                    <label for="selection item"><input type="checkbox">HTML</label>
+                    <label for="selection item"><input type="checkbox">CSS</label>
+                    <label for="selection item"><input type="checkbox">JS</label>
+                   </div> 
+                </div>
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="color">Color:</label>
+                    <input type="color" id="color" name="color" value="#f59e0b">
+                </div>
+                <div class="form-group">
+                    <label for="range">Range:</label>
+                    <input type="range" id="range" name="range" min="0" max="100">
+                </div>
+                <div class="form-group">
+                    <label for="file">File:</label>
+                    <input type="file" id="file" name="file" required>
+                </div>
+                <div class="form-group">
+                    <label for="search">Search:</label>
+                    <input type="search" id="search" name="search" placeholder="Search...">
+                </div>
+                <div class="form-group">
+                    <label for="search">Search:</label>
+                    <textarea  id="bio" name="bio" rows="3" placeholder="Tell us about yourself..." required minlength="10"></textarea>
+                </div>
+            </div>
+            <input type="submit"class="btn-submit">
+            <button type="submit" class="btn-submit">Submit Registration</button>
+        </form>
+    </div>
+</body>
+</html>
