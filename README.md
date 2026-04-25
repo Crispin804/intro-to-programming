@@ -51,3 +51,23 @@ git clone https://github.com/Kwanusu/test_example.git
 
 cd test_example
 ```
+
+
+This is an ordred list
+
+1. item 1
+2. item 2
+
+
+this is an unordered list
+
+- item 1
+- item 2
+
+
+
+[visit google](https://google.com)
+
+![my image](/assets/reddy.jpg)
+
+
